@@ -1,21 +1,21 @@
 import { useState, useEffect } from "react";
-import { Binary, Brain, Eye, Zap } from "lucide-react";
+import { Binary } from "lucide-react";
 
 interface LoadingScreenProps {
   onComplete?: () => void;
   duration?: number;
 }
 
-export function LoadingScreen({ onComplete, duration = 3000 }: LoadingScreenProps) {
+export function LoadingScreen({ onComplete, duration = 2500 }: LoadingScreenProps) {
   const [progress, setProgress] = useState(0);
   const [currentPhase, setCurrentPhase] = useState(0);
   const [isComplete, setIsComplete] = useState(false);
 
   const phases = [
-    { text: "Initializing quantum consciousness detectors...", icon: Brain },
-    { text: "Calibrating entropy analysis matrices...", icon: Binary },
-    { text: "Establishing interdimensional communication channels...", icon: Zap },
-    { text: "Scanning for non-human intelligence signatures...", icon: Eye },
+    "INITIALIZING",
+    "SCANNING",
+    "ANALYZING", 
+    "READY"
   ];
 
   useEffect(() => {
@@ -31,7 +31,7 @@ export function LoadingScreen({ onComplete, duration = 3000 }: LoadingScreenProp
           setIsComplete(true);
           setTimeout(() => {
             onComplete?.();
-          }, 500);
+          }, 300);
           clearInterval(interval);
         }
         
@@ -43,103 +43,59 @@ export function LoadingScreen({ onComplete, duration = 3000 }: LoadingScreenProp
   }, [duration, onComplete, phases.length]);
 
   return (
-    <div className={`fixed inset-0 z-50 flex items-center justify-center bg-background transition-opacity duration-500 ${
+    <div className={`fixed inset-0 z-50 flex items-center justify-center bg-background transition-opacity duration-300 ${
       isComplete ? 'opacity-0 pointer-events-none' : 'opacity-100'
     }`}>
-      {/* Animated background */}
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-background via-background/90 to-background" />
-        
-        {/* Floating particles */}
-        {Array.from({ length: 20 }).map((_, i) => (
-          <div
-            key={i}
-            className="absolute w-1 h-1 bg-primary/30 rounded-full animate-pulse"
-            style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-              animationDelay: `${Math.random() * 3}s`,
-              animationDuration: `${2 + Math.random() * 2}s`,
-            }}
-          />
-        ))}
-        
-        {/* Scanning lines */}
-        <div className="absolute inset-0">
-          <div className="h-px bg-gradient-to-r from-transparent via-primary/50 to-transparent absolute top-1/4 w-full animate-pulse" />
-          <div className="h-px bg-gradient-to-r from-transparent via-anomaly-low/50 to-transparent absolute top-2/4 w-full animate-pulse" style={{ animationDelay: '1s' }} />
-          <div className="h-px bg-gradient-to-r from-transparent via-anomaly-medium/50 to-transparent absolute top-3/4 w-full animate-pulse" style={{ animationDelay: '2s' }} />
-        </div>
+      {/* Single scanning line */}
+      <div className="absolute inset-0">
+        <div 
+          className="h-px bg-gradient-to-r from-transparent via-foreground/20 to-transparent absolute w-full transition-all duration-1000"
+          style={{ 
+            top: `${20 + (progress * 0.6)}%`,
+            opacity: isComplete ? 0 : 0.6
+          }}
+        />
       </div>
 
       {/* Main content */}
-      <div className="relative z-10 text-center space-y-8 max-w-md mx-auto px-6">
+      <div className="relative z-10 text-center space-y-8 max-w-sm mx-auto px-6">
+        
         {/* Logo */}
-        <div className="flex items-center justify-center gap-4 mb-8">
-          <div className="relative">
-            <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center border border-primary/20">
-              <Binary className="w-8 h-8 text-primary animate-pulse" />
-            </div>
-            <div className="absolute inset-0 rounded-full border border-primary/20 animate-ping" />
+        <div className="flex items-center justify-center gap-3">
+          <div className="w-8 h-8 border border-foreground/20 rounded-sm flex items-center justify-center">
+            <Binary className="w-4 h-4 text-foreground/60" />
           </div>
           <div className="text-left">
-            <h1 className="text-2xl font-bold bg-gradient-to-r from-primary via-anomaly-low to-anomaly-medium bg-clip-text text-transparent">
-              👽 Alienator
+            <h1 className="text-lg font-mono font-medium text-foreground/90 tracking-wider">
+              ALIENATOR
             </h1>
-            <p className="text-sm text-muted-foreground">Detection System</p>
+            <p className="text-xs text-foreground/40 font-mono tracking-widest">
+              DETECTION SYSTEM
+            </p>
           </div>
         </div>
 
-        {/* Progress indicator */}
-        <div className="space-y-4">
-          <div className="relative w-full h-2 bg-muted/20 rounded-full overflow-hidden">
+        {/* Progress */}
+        <div className="space-y-3">
+          <div className="w-48 h-px bg-foreground/10 mx-auto relative">
             <div 
-              className="absolute top-0 left-0 h-full bg-gradient-to-r from-anomaly-low via-anomaly-medium to-anomaly-high rounded-full transition-all duration-300"
+              className="absolute top-0 left-0 h-full bg-foreground/60 transition-all duration-200"
               style={{ width: `${progress}%` }}
             />
-            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent animate-pulse" />
           </div>
           
-          <div className="text-center text-sm text-muted-foreground">
-            {progress}% Complete
+          <div className="font-mono text-xs text-foreground/50 tracking-widest">
+            {progress.toString().padStart(3, '0')}%
           </div>
         </div>
 
         {/* Current phase */}
-        <div className="space-y-3">
-          <div className="flex items-center justify-center gap-3 min-h-[24px]">
-            {phases[currentPhase] && (() => {
-              const IconComponent = phases[currentPhase].icon;
-              return (
-                <>
-                  <IconComponent className="w-5 h-5 text-anomaly-medium animate-pulse" />
-                  <span className="text-sm text-foreground/80 animate-fade-in">
-                    {phases[currentPhase].text}
-                  </span>
-                </>
-              );
-            })()}
-          </div>
-          
-          {/* Phase indicators */}
-          <div className="flex justify-center gap-2">
-            {phases.map((_, index) => (
-              <div
-                key={index}
-                className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                  index <= currentPhase 
-                    ? 'bg-anomaly-low' 
-                    : 'bg-muted/30'
-                }`}
-              />
-            ))}
+        <div className="min-h-[20px]">
+          <div className="font-mono text-sm text-foreground/70 tracking-widest">
+            {phases[currentPhase]}
           </div>
         </div>
 
-        {/* Status text */}
-        <div className="text-xs text-muted-foreground/60 italic">
-          "Searching for intelligence beyond human understanding..."
-        </div>
       </div>
     </div>
   );
