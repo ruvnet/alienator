@@ -1,3 +1,4 @@
+
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -12,6 +13,7 @@ import Cryptographic from "./pages/Cryptographic";
 import Linguistic from "./pages/Linguistic";
 import AnomalyLog from "./pages/AnomalyLog";
 import Configuration from "./pages/Configuration";
+import Documentation from "./pages/Documentation";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 
@@ -33,6 +35,7 @@ const App = () => (
             <Route path="linguistic" element={<Linguistic />} />
             <Route path="logs" element={<AnomalyLog />} />
             <Route path="settings" element={<Configuration />} />
+            <Route path="docs" element={<Documentation />} />
             <Route path="*" element={<NotFound />} />
           </Route>
         </Routes>

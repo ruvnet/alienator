@@ -7,7 +7,8 @@ import {
   Languages, 
   History, 
   Settings,
-  Binary
+  Binary,
+  BookOpen
 } from "lucide-react";
 import { NavLink, useLocation } from "react-router-dom";
 import {
@@ -30,6 +31,7 @@ const navigationItems = [
   { icon: Shield, label: "Cryptographic", path: "/crypto" },
   { icon: Languages, label: "Linguistic", path: "/linguistic" },
   { icon: History, label: "Anomaly Log", path: "/logs" },
+  { icon: BookOpen, label: "Documentation", path: "/docs" },
   { icon: Settings, label: "Configuration", path: "/settings" }
 ];
 
