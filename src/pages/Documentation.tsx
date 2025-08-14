@@ -292,68 +292,260 @@ const Documentation = () => {
         </TabsContent>
 
         <TabsContent value="architecture" className="space-y-6">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            <Card className="border-primary/20">
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2">
+                  <Code className="w-5 h-5 text-primary" />
+                  Frontend Stack
+                </CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                <div className="bg-card/50 p-4 rounded-lg border border-primary/10">
+                  <h4 className="font-semibold text-primary mb-3">Core Technologies</h4>
+                  <div className="grid grid-cols-2 gap-3 text-sm">
+                    <div className="flex items-center gap-2">
+                      <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
+                      <span>React 18</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <div className="w-2 h-2 bg-blue-600 rounded-full"></div>
+                      <span>TypeScript</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <div className="w-2 h-2 bg-cyan-500 rounded-full"></div>
+                      <span>Tailwind CSS</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <div className="w-2 h-2 bg-orange-500 rounded-full"></div>
+                      <span>Vite</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="bg-card/50 p-4 rounded-lg border border-primary/10">
+                  <h4 className="font-semibold text-primary mb-3">Key Libraries</h4>
+                  <div className="grid grid-cols-2 gap-3 text-sm">
+                    <div className="flex items-center gap-2">
+                      <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                      <span>TanStack Query</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <div className="w-2 h-2 bg-purple-500 rounded-full"></div>
+                      <span>Zustand</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <div className="w-2 h-2 bg-red-500 rounded-full"></div>
+                      <span>Recharts</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <div className="w-2 h-2 bg-yellow-500 rounded-full"></div>
+                      <span>Three.js</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <div className="w-2 h-2 bg-pink-500 rounded-full"></div>
+                      <span>Framer Motion</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <div className="w-2 h-2 bg-indigo-500 rounded-full"></div>
+                      <span>Socket.IO</span>
+                    </div>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+
+            <Card className="border-primary/20">
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2">
+                  <Database className="w-5 h-5 text-primary" />
+                  Backend Structure
+                </CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                <div className="bg-card/50 p-4 rounded-lg border border-primary/10">
+                  <h4 className="font-semibold text-primary mb-3">./alienator_pkg/</h4>
+                  <div className="space-y-3 text-sm">
+                    <div>
+                      <div className="flex items-center gap-2 mb-2">
+                        <Terminal className="w-4 h-4 text-accent" />
+                        <span className="font-medium">cmd/</span>
+                        <span className="text-muted-foreground">Main Applications</span>
+                      </div>
+                      <div className="ml-6 space-y-1 text-xs text-muted-foreground">
+                        <div>• api/ - HTTP REST API server</div>
+                        <div>• cli/ - Command-line interface</div>
+                        <div>• worker/ - Background processing</div>
+                        <div>• simple-api/ - Lightweight API</div>
+                      </div>
+                    </div>
+
+                    <div>
+                      <div className="flex items-center gap-2 mb-2">
+                        <Code className="w-4 h-4 text-accent" />
+                        <span className="font-medium">internal/</span>
+                        <span className="text-muted-foreground">Core Logic</span>
+                      </div>
+                      <div className="ml-6 space-y-1 text-xs text-muted-foreground">
+                        <div>• analyzers/ - Detection algorithms</div>
+                        <div>• api/ - HTTP handlers & GraphQL</div>
+                        <div>• core/ - Central coordination</div>
+                        <div>• consensus/ - Byzantine fault tolerance</div>
+                        <div>• services/ - Business logic</div>
+                        <div>• grpc/ - gRPC services</div>
+                      </div>
+                    </div>
+
+                    <div>
+                      <div className="flex items-center gap-2 mb-2">
+                        <Shield className="w-4 h-4 text-accent" />
+                        <span className="font-medium">pkg/</span>
+                        <span className="text-muted-foreground">Public APIs</span>
+                      </div>
+                      <div className="ml-6 space-y-1 text-xs text-muted-foreground">
+                        <div>• detector/ - Core detection engine</div>
+                        <div>• crypto/ - Cryptographic utilities</div>
+                        <div>• metrics/ - System metrics</div>
+                        <div>• utils/ - Shared utilities</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+
           <Card className="border-primary/20">
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
-                <Code className="w-5 h-5 text-primary" />
-                System Architecture
+                <Brain className="w-5 h-5 text-primary" />
+                Analysis Engine Architecture
               </CardTitle>
             </CardHeader>
             <CardContent className="space-y-4">
-              <div className="bg-card/50 p-4 rounded-lg border border-primary/10">
-                <h4 className="font-semibold text-primary mb-3">Frontend Stack</h4>
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-3 text-sm">
-                  <div className="flex items-center gap-2">
-                    <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
-                    <span>React 18</span>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                <div className="bg-card/50 p-4 rounded-lg border border-primary/10">
+                  <h4 className="font-semibold text-primary mb-3">Entropy Analysis</h4>
+                  <div className="space-y-1 text-xs text-muted-foreground">
+                    <div>• Shannon entropy calculation</div>
+                    <div>• Information density metrics</div>
+                    <div>• Compression ratio analysis</div>
+                    <div>• Randomness detection</div>
                   </div>
-                  <div className="flex items-center gap-2">
-                    <div className="w-2 h-2 bg-blue-600 rounded-full"></div>
-                    <span>TypeScript</span>
+                  <div className="mt-2 text-xs">
+                    <code className="bg-primary/10 px-2 py-1 rounded">internal/analyzers/entropy/</code>
                   </div>
-                  <div className="flex items-center gap-2">
-                    <div className="w-2 h-2 bg-cyan-500 rounded-full"></div>
-                    <span>Tailwind CSS</span>
+                </div>
+
+                <div className="bg-card/50 p-4 rounded-lg border border-primary/10">
+                  <h4 className="font-semibold text-primary mb-3">ML Detection</h4>
+                  <div className="space-y-1 text-xs text-muted-foreground">
+                    <div>• Neural network models</div>
+                    <div>• Pattern recognition</div>
+                    <div>• Embedding analysis</div>
+                    <div>• Clustering algorithms</div>
                   </div>
-                  <div className="flex items-center gap-2">
-                    <div className="w-2 h-2 bg-orange-500 rounded-full"></div>
-                    <span>Vite</span>
+                  <div className="mt-2 text-xs">
+                    <code className="bg-primary/10 px-2 py-1 rounded">internal/analyzers/ml/</code>
+                  </div>
+                </div>
+
+                <div className="bg-card/50 p-4 rounded-lg border border-primary/10">
+                  <h4 className="font-semibold text-primary mb-3">Linguistic Analysis</h4>
+                  <div className="space-y-1 text-xs text-muted-foreground">
+                    <div>• Grammar pattern analysis</div>
+                    <div>• Semantic coherence</div>
+                    <div>• Language universals</div>
+                    <div>• Style consistency</div>
+                  </div>
+                  <div className="mt-2 text-xs">
+                    <code className="bg-primary/10 px-2 py-1 rounded">internal/analyzers/linguistic/</code>
+                  </div>
+                </div>
+
+                <div className="bg-card/50 p-4 rounded-lg border border-primary/10">
+                  <h4 className="font-semibold text-primary mb-3">Cryptographic</h4>
+                  <div className="space-y-1 text-xs text-muted-foreground">
+                    <div>• Statistical randomness tests</div>
+                    <div>• NIST test suite implementation</div>
+                    <div>• Frequency analysis</div>
+                    <div>• Chi-square testing</div>
+                  </div>
+                  <div className="mt-2 text-xs">
+                    <code className="bg-primary/10 px-2 py-1 rounded">internal/analyzers/cryptographic/</code>
+                  </div>
+                </div>
+
+                <div className="bg-card/50 p-4 rounded-lg border border-primary/10">
+                  <h4 className="font-semibold text-primary mb-3">Cross-Model</h4>
+                  <div className="space-y-1 text-xs text-muted-foreground">
+                    <div>• Multi-model consensus</div>
+                    <div>• Response correlation</div>
+                    <div>• Deviation scoring</div>
+                    <div>• Temporal analysis</div>
+                  </div>
+                  <div className="mt-2 text-xs">
+                    <code className="bg-primary/10 px-2 py-1 rounded">internal/analyzers/pattern/</code>
+                  </div>
+                </div>
+
+                <div className="bg-card/50 p-4 rounded-lg border border-primary/10">
+                  <h4 className="font-semibold text-primary mb-3">Consensus</h4>
+                  <div className="space-y-1 text-xs text-muted-foreground">
+                    <div>• Byzantine fault tolerance</div>
+                    <div>• Raft consensus protocol</div>
+                    <div>• CRDT synchronization</div>
+                    <div>• Gossip protocols</div>
+                  </div>
+                  <div className="mt-2 text-xs">
+                    <code className="bg-primary/10 px-2 py-1 rounded">internal/consensus/</code>
                   </div>
                 </div>
               </div>
 
               <div className="bg-card/50 p-4 rounded-lg border border-primary/10">
-                <h4 className="font-semibold text-primary mb-3">Key Libraries</h4>
-                <div className="grid grid-cols-2 md:grid-cols-3 gap-3 text-sm">
-                  <div className="flex items-center gap-2">
-                    <div className="w-2 h-2 bg-green-500 rounded-full"></div>
-                    <span>TanStack Query</span>
+                <h4 className="font-semibold text-primary mb-3">Deployment & Infrastructure</h4>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
+                  <div>
+                    <div className="font-medium mb-2">Docker</div>
+                    <div className="space-y-1 text-xs text-muted-foreground">
+                      <div>• Multi-stage builds</div>
+                      <div>• Development containers</div>
+                      <div>• Docker Compose orchestration</div>
+                    </div>
+                    <div className="mt-2 text-xs">
+                      <code className="bg-primary/10 px-2 py-1 rounded">deployments/docker/</code>
+                    </div>
                   </div>
-                  <div className="flex items-center gap-2">
-                    <div className="w-2 h-2 bg-purple-500 rounded-full"></div>
-                    <span>Zustand</span>
+                  
+                  <div>
+                    <div className="font-medium mb-2">Kubernetes</div>
+                    <div className="space-y-1 text-xs text-muted-foreground">
+                      <div>• Helm charts</div>
+                      <div>• Environment configs</div>
+                      <div>• Auto-scaling policies</div>
+                    </div>
+                    <div className="mt-2 text-xs">
+                      <code className="bg-primary/10 px-2 py-1 rounded">deployments/k8s/</code>
+                    </div>
                   </div>
-                  <div className="flex items-center gap-2">
-                    <div className="w-2 h-2 bg-red-500 rounded-full"></div>
-                    <span>Recharts</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <div className="w-2 h-2 bg-yellow-500 rounded-full"></div>
-                    <span>Three.js</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <div className="w-2 h-2 bg-pink-500 rounded-full"></div>
-                    <span>Framer Motion</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <div className="w-2 h-2 bg-indigo-500 rounded-full"></div>
-                    <span>Socket.IO</span>
+
+                  <div>
+                    <div className="font-medium mb-2">Terraform</div>
+                    <div className="space-y-1 text-xs text-muted-foreground">
+                      <div>• Infrastructure as Code</div>
+                      <div>• Multi-environment support</div>
+                      <div>• VPC & networking</div>
+                    </div>
+                    <div className="mt-2 text-xs">
+                      <code className="bg-primary/10 px-2 py-1 rounded">deployments/terraform/</code>
+                    </div>
                   </div>
                 </div>
               </div>
 
               <div className="bg-card/50 p-4 rounded-lg border border-primary/10">
-                <h4 className="font-semibold text-primary mb-3">Data Flow</h4>
+                <h4 className="font-semibold text-primary mb-3">Data Flow Architecture</h4>
                 <div className="space-y-2 text-sm text-muted-foreground">
                   <div className="flex items-center gap-2">
                     <Terminal className="w-4 h-4 text-accent" />
@@ -364,12 +556,16 @@ const Documentation = () => {
                     <span>REST API → Historical data and configuration</span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <Zap className="w-4 h-4 text-accent" />
-                    <span>Zustand → Global state management</span>
+                    <GitBranch className="w-4 h-4 text-accent" />
+                    <span>gRPC → High-performance service communication</span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <Eye className="w-4 h-4 text-accent" />
-                    <span>React Query → Server state caching</span>
+                    <Zap className="w-4 h-4 text-accent" />
+                    <span>NATS → Message queuing and event streaming</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <Shield className="w-4 h-4 text-accent" />
+                    <span>Byzantine consensus → Fault-tolerant decision making</span>
                   </div>
                 </div>
               </div>
