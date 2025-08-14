@@ -72,27 +72,29 @@ export default function Configuration() {
   ];
 
   return (
-    <div className="space-y-4 md:space-y-6 animate-fade-in max-w-full overflow-hidden">
+    <div className="space-y-3 sm:space-y-4 md:space-y-6 animate-fade-in w-full max-w-full overflow-hidden px-1 sm:px-0">
       {/* Page Header */}
-      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 md:gap-4">
+      <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
         <div className="min-w-0 flex-1">
-          <h1 className="text-xl md:text-2xl lg:text-3xl font-bold text-foreground truncate">Configuration</h1>
-          <p className="text-muted-foreground text-xs md:text-sm lg:text-base">System settings and preferences</p>
+          <h1 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold text-foreground truncate">Configuration</h1>
+          <p className="text-muted-foreground text-xs sm:text-sm md:text-base">System settings and preferences</p>
         </div>
-        <div className="flex items-center gap-2">
+        <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2">
           {unsavedChanges && (
-            <Badge variant="outline" className="text-anomaly-medium border-anomaly-medium/30">
+            <Badge variant="outline" className="text-anomaly-medium border-anomaly-medium/30 text-center">
               Unsaved Changes
             </Badge>
           )}
-          <Button variant="outline" size="sm" onClick={handleReset}>
-            <RotateCcw className="w-4 h-4 mr-2" />
-            Reset
-          </Button>
-          <Button size="sm" onClick={handleSave} disabled={!unsavedChanges}>
-            <Save className="w-4 h-4 mr-2" />
-            Save Changes
-          </Button>
+          <div className="flex gap-2">
+            <Button variant="outline" size="sm" onClick={handleReset} className="flex-1 sm:flex-none">
+              <RotateCcw className="w-4 h-4 mr-1 sm:mr-2" />
+              <span className="text-xs sm:text-sm">Reset</span>
+            </Button>
+            <Button size="sm" onClick={handleSave} disabled={!unsavedChanges} className="flex-1 sm:flex-none">
+              <Save className="w-4 h-4 mr-1 sm:mr-2" />
+              <span className="text-xs sm:text-sm">Save</span>
+            </Button>
+          </div>
         </div>
       </div>
 
@@ -117,11 +119,11 @@ export default function Configuration() {
                 Anomaly Detection Thresholds
               </CardTitle>
             </CardHeader>
-            <CardContent className="space-y-6">
-              <div className="grid grid-cols-1 lg:grid-cols-3 gap-3 md:gap-4 lg:gap-6 w-full">
-                <div className="space-y-4">
-                  <div>
-                    <Label className="text-sm font-medium">
+            <CardContent className="space-y-4 sm:space-y-6 p-3 sm:p-6">
+              <div className="space-y-4 lg:space-y-0 lg:grid lg:grid-cols-3 lg:gap-6">
+                <div className="space-y-3 sm:space-y-4">
+                  <div className="space-y-2">
+                    <Label className="text-sm font-medium break-words">
                       Shannon Entropy Threshold: {settings.entropyThreshold[0].toFixed(1)}
                     </Label>
                     <p className="text-xs text-muted-foreground mb-3">
@@ -224,15 +226,15 @@ export default function Configuration() {
                 AI Model Configuration
               </CardTitle>
             </CardHeader>
-            <CardContent className="space-y-4">
+            <CardContent className="space-y-4 p-3 sm:p-6">
               <div className="space-y-4">
                 <Label className="text-sm font-medium">Enabled Models for Analysis</Label>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 md:gap-4 w-full">
+                <div className="space-y-3 sm:grid sm:grid-cols-2 sm:gap-3 md:gap-4">
                   {availableModels.map((model) => (
                     <div key={model.id} className="flex items-center justify-between p-3 border border-border/30 rounded-lg bg-muted/10">
-                      <div>
-                        <h3 className="font-medium">{model.name}</h3>
-                        <p className="text-sm text-muted-foreground">{model.provider}</p>
+                      <div className="min-w-0 flex-1">
+                        <h3 className="font-medium truncate">{model.name}</h3>
+                        <p className="text-sm text-muted-foreground truncate">{model.provider}</p>
                       </div>
                       <Switch
                         checked={settings.enabledModels.includes(model.id)}
@@ -248,7 +250,7 @@ export default function Configuration() {
                 </div>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-4 w-full">
+              <div className="space-y-4 sm:space-y-0 sm:grid sm:grid-cols-1 md:grid-cols-2 md:gap-4">
                 <div className="space-y-2">
                   <Label className="text-sm font-medium">Default Analysis Model</Label>
                   <Select defaultValue="gpt-4">
