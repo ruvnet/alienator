@@ -34,23 +34,29 @@ const Documentation = () => {
             <Binary className="w-8 h-8 text-primary" />
           </div>
           <h1 className="text-4xl font-bold bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent">
-            VibeCast Anomaly Detector
+            👽 Alienator
           </h1>
         </div>
         <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-          Advanced AI anomaly detection system for multi-model language analysis with real-time monitoring and cryptographic pattern recognition.
+          Advanced Detection System for Non-Human Intelligence in AI Outputs
         </p>
         <div className="flex flex-wrap justify-center gap-2 mt-4">
           <Badge variant="outline" className="bg-anomaly-high/10 text-anomaly-high border-anomaly-high/30">
-            Real-time Analysis
+            Go 1.21+
           </Badge>
           <Badge variant="outline" className="bg-anomaly-medium/10 text-anomaly-medium border-anomaly-medium/30">
-            Multi-Model Support
+            MIT License
           </Badge>
           <Badge variant="outline" className="bg-anomaly-low/10 text-anomaly-low border-anomaly-low/30">
-            Cryptographic Security
+            Docker Ready
+          </Badge>
+          <Badge variant="outline" className="bg-primary/10 text-primary border-primary/30">
+            Experimental
           </Badge>
         </div>
+        <blockquote className="text-sm italic text-muted-foreground mt-4 border-l-2 border-primary/30 pl-4">
+          "The greatest discovery would be to find that we are not alone, and that contact has already begun—hidden in plain sight within the very systems we've created."
+        </blockquote>
       </div>
 
       <Tabs defaultValue="overview" className="w-full">
@@ -71,29 +77,35 @@ const Documentation = () => {
                 System Overview
               </CardTitle>
               <CardDescription>
-                Advanced anomaly detection for AI-generated content analysis
+                Advanced Detection System for Non-Human Intelligence in AI Outputs
               </CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
+              <div className="bg-card/50 p-4 rounded-lg border border-primary/10 mb-4">
+                <p className="text-sm text-muted-foreground italic">
+                  As artificial intelligence systems become increasingly sophisticated, the idea of hidden or non-human signals in AI-generated text has moved from science fiction to a speculative topic of discussion. Alienator approaches this question seriously by framing it as a problem of anomaly detection and signal processing.
+                </p>
+              </div>
+              
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="space-y-3">
                   <h4 className="font-semibold text-primary">Core Capabilities</h4>
                   <ul className="space-y-2 text-sm text-muted-foreground">
                     <li className="flex items-center gap-2">
                       <Terminal className="w-4 h-4 text-accent" />
-                      Real-time anomaly scoring and detection
+                      Real-time anomaly detection (10,000+ msgs/sec)
                     </li>
                     <li className="flex items-center gap-2">
                       <Brain className="w-4 h-4 text-accent" />
-                      Multi-model AI response analysis
+                      Multi-layer analysis framework
                     </li>
                     <li className="flex items-center gap-2">
                       <Lock className="w-4 h-4 text-accent" />
-                      Cryptographic pattern recognition
+                      Byzantine fault-tolerant consensus
                     </li>
                     <li className="flex items-center gap-2">
                       <Zap className="w-4 h-4 text-accent" />
-                      WebSocket real-time streaming
+                      Distributed architecture with NATS
                     </li>
                   </ul>
                 </div>
@@ -102,19 +114,19 @@ const Documentation = () => {
                   <ul className="space-y-2 text-sm text-muted-foreground">
                     <li className="flex items-center gap-2">
                       <Cpu className="w-4 h-4 text-accent" />
-                      Entropy analysis and compression ratios
+                      Information-theoretic entropy analysis
                     </li>
                     <li className="flex items-center gap-2">
                       <Database className="w-4 h-4 text-accent" />
-                      Embedding vector clustering
+                      Neural network pattern recognition
                     </li>
                     <li className="flex items-center gap-2">
                       <Languages className="w-4 h-4 text-accent" />
-                      Linguistic pattern analysis
+                      Human language universals validation
                     </li>
                     <li className="flex items-center gap-2">
                       <GitBranch className="w-4 h-4 text-accent" />
-                      Cross-model comparative analysis
+                      Temporal correlation across models
                     </li>
                   </ul>
                 </div>
