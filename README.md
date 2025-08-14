@@ -1,3 +1,4 @@
+
 # 👽 Alienator: Advanced Detection System for Non-Human Intelligence in AI Outputs
 
 [![Go Version](https://img.shields.io/badge/Go-1.21%2B-blue.svg)](https://golang.org)
@@ -15,6 +16,11 @@ Alienator is an advanced detection system specifically engineered to identify an
 While such claims remain unproven, they inspire a fascinating technical challenge: **Can we detect unusual, alien-like anomalies in AI outputs?**
 
 Alienator approaches this question seriously by framing it as a problem of anomaly detection and signal processing. By treating AI outputs as data streams, we apply statistical, cryptographic, and linguistic analyses to identify outputs that are out-of-distribution or structurally unlikely under human language norms.
+
+
+[![Alienator](assets/image-wide.png)](https://alienator.ruv.io)
+
+👽 https://alienator.ruv.io
 
 ## 🎯 Rationale
 
@@ -178,6 +184,31 @@ sudo cp alienator /usr/local/bin/
 # Note: Use cmd/cli-simple as it contains the working implementation
 # cmd/cli/main.go requires full platform setup with databases and services
 ```
+
+## 🎛️ Dashboard
+
+The **Alienator Dashboard** provides a modern web interface for visualizing and managing xenotype detections.
+
+### Dashboard Installation & Setup
+
+```bash
+# Install Node.js dependencies
+npm install
+
+# Start development server
+npm run dev
+
+# Build for production
+npm run build
+
+# Preview production build
+npm run preview
+
+# Run linting
+npm run lint
+```
+
+The dashboard will be available at `http://localhost:5173` in development mode.
 
 ### Commands
 
