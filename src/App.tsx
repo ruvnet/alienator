@@ -29,7 +29,7 @@ const App = () => {
   };
 
   if (showLoading) {
-    return <LoadingScreen onComplete={handleLoadingComplete} duration={3000} />;
+    return <LoadingScreen onComplete={handleLoadingComplete} duration={5000} />;
   }
 
   return (
