@@ -24,21 +24,12 @@ const queryClient = new QueryClient();
 const App = () => {
   const [showLoading, setShowLoading] = useState(true);
 
-  useEffect(() => {
-    // Check if user has seen loading screen in this session
-    const hasSeenLoading = sessionStorage.getItem('alienator-loading-seen');
-    if (hasSeenLoading) {
-      setShowLoading(false);
-    }
-  }, []);
-
   const handleLoadingComplete = () => {
-    sessionStorage.setItem('alienator-loading-seen', 'true');
     setShowLoading(false);
   };
 
   if (showLoading) {
-    return <LoadingScreen onComplete={handleLoadingComplete} />;
+    return <LoadingScreen onComplete={handleLoadingComplete} duration={3000} />;
   }
 
   return (
