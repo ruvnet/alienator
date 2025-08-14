@@ -98,13 +98,15 @@ export default function Configuration() {
 
       {/* Configuration Tabs */}
       <Tabs defaultValue="thresholds" className="space-y-4">
-        <TabsList className="bg-muted/20">
-          <TabsTrigger value="thresholds">Thresholds</TabsTrigger>
-          <TabsTrigger value="models">Models</TabsTrigger>
-          <TabsTrigger value="notifications">Notifications</TabsTrigger>
-          <TabsTrigger value="analysis">Analysis</TabsTrigger>
-          <TabsTrigger value="data">Data & Storage</TabsTrigger>
-          <TabsTrigger value="api">API Settings</TabsTrigger>
+        <TabsList className="bg-muted/20 w-full overflow-x-auto">
+          <div className="flex min-w-max">
+            <TabsTrigger value="thresholds" className="text-xs sm:text-sm">Thresholds</TabsTrigger>
+            <TabsTrigger value="models" className="text-xs sm:text-sm">Models</TabsTrigger>
+            <TabsTrigger value="notifications" className="text-xs sm:text-sm">Notifications</TabsTrigger>
+            <TabsTrigger value="analysis" className="text-xs sm:text-sm">Analysis</TabsTrigger>
+            <TabsTrigger value="data" className="text-xs sm:text-sm">Data & Storage</TabsTrigger>
+            <TabsTrigger value="api" className="text-xs sm:text-sm">API Settings</TabsTrigger>
+          </div>
         </TabsList>
 
         <TabsContent value="thresholds" className="space-y-4">
