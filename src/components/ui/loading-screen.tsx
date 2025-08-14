@@ -108,17 +108,17 @@ export function LoadingScreen({ onComplete, duration = 3000 }: LoadingScreenProp
         {/* Current phase */}
         <div className="space-y-3">
           <div className="flex items-center justify-center gap-3 min-h-[24px]">
-            {phases[currentPhase] && (
-              <>
-                {(() => {
-                  const CurrentIcon = phases[currentPhase].icon;
-                  return <CurrentIcon className="w-5 h-5 text-anomaly-medium animate-pulse" />;
-                })()}
-                <span className="text-sm text-foreground/80 animate-fade-in">
-                  {phases[currentPhase].text}
-                </span>
-              </>
-            )}
+            {phases[currentPhase] && (() => {
+              const IconComponent = phases[currentPhase].icon;
+              return (
+                <>
+                  <IconComponent className="w-5 h-5 text-anomaly-medium animate-pulse" />
+                  <span className="text-sm text-foreground/80 animate-fade-in">
+                    {phases[currentPhase].text}
+                  </span>
+                </>
+              );
+            })()}
           </div>
           
           {/* Phase indicators */}
