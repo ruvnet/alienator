@@ -50,12 +50,12 @@ export default function Embeddings() {
   const outlierCount = mockEmbeddingData.filter(item => item.outlier).length;
 
   return (
-    <div className="space-y-6 animate-fade-in">
+    <div className="space-y-4 md:space-y-6 animate-fade-in max-w-full overflow-hidden">
       {/* Page Header */}
-      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-        <div>
-          <h1 className="text-2xl md:text-3xl font-bold text-foreground">Embedding Visualization</h1>
-          <p className="text-muted-foreground text-sm md:text-base">3D clustering and outlier detection</p>
+      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 md:gap-4">
+        <div className="min-w-0 flex-1">
+          <h1 className="text-xl md:text-2xl lg:text-3xl font-bold text-foreground truncate">Embedding Visualization</h1>
+          <p className="text-muted-foreground text-xs md:text-sm lg:text-base">3D clustering and outlier detection</p>
         </div>
         <div className="flex items-center gap-2">
           <Badge variant="outline" className="text-anomaly-medium border-anomaly-medium/30">
@@ -77,7 +77,7 @@ export default function Embeddings() {
           </CardTitle>
         </CardHeader>
         <CardContent>
-          <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-3 md:gap-4 w-full">
             <div className="space-y-2">
               <label className="text-sm font-medium">Clustering Method</label>
               <Select value={clusteringMethod} onValueChange={setClusteringMethod}>
@@ -145,7 +145,7 @@ export default function Embeddings() {
       </Card>
 
       {/* Main Visualization Area */}
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-3 md:gap-4 lg:gap-6 w-full">
         {/* 3D Visualization */}
         <Card className="lg:col-span-2 bg-card/50 border-border/50">
           <CardHeader>
@@ -282,7 +282,7 @@ export default function Embeddings() {
         </TabsList>
 
         <TabsContent value="clusters" className="space-y-4">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-4 w-full">
             {Object.entries(clusterCounts).map(([cluster, count]) => (
               <Card key={cluster} className="bg-card/50 border-border/50">
                 <CardHeader className="pb-2">
@@ -334,7 +334,7 @@ export default function Embeddings() {
         </TabsContent>
 
         <TabsContent value="metrics" className="space-y-4">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4 w-full">
             <Card className="bg-card/50 border-border/50">
               <CardHeader className="pb-2">
                 <CardTitle className="text-sm">Silhouette Score</CardTitle>

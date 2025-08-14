@@ -60,12 +60,12 @@ export default function Linguistic() {
     : mockLinguisticMetrics.filter(m => m.status === selectedMetric);
 
   return (
-    <div className="space-y-6 animate-fade-in">
+    <div className="space-y-4 md:space-y-6 animate-fade-in max-w-full overflow-hidden">
       {/* Page Header */}
-      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-        <div>
-          <h1 className="text-2xl md:text-3xl font-bold text-foreground">Linguistic Analysis</h1>
-          <p className="text-muted-foreground text-sm md:text-base">Natural language pattern detection and style analysis</p>
+      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 md:gap-4">
+        <div className="min-w-0 flex-1">
+          <h1 className="text-xl md:text-2xl lg:text-3xl font-bold text-foreground truncate">Linguistic Analysis</h1>
+          <p className="text-muted-foreground text-xs md:text-sm lg:text-base">Natural language pattern detection and style analysis</p>
         </div>
         <div className="flex items-center gap-2">
           <Badge variant="outline" className="text-anomaly-medium border-anomaly-medium/30">
@@ -154,7 +154,7 @@ export default function Linguistic() {
           </CardTitle>
         </CardHeader>
         <CardContent>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4 w-full">
             {filteredMetrics.map((metric, index) => (
               <div
                 key={index}
@@ -254,7 +254,7 @@ export default function Linguistic() {
               </CardTitle>
             </CardHeader>
             <CardContent>
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-3 md:gap-4 w-full">
                 {mockStyleAnalysis.map((feature, index) => (
                   <div
                     key={index}
@@ -330,7 +330,7 @@ export default function Linguistic() {
             </CardHeader>
             <CardContent>
               <div className="space-y-4">
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4 w-full">
                   {["GPT-4", "Claude-3", "Cohere"].map((model) => (
                     <div key={model} className="p-4 border border-border/30 rounded-lg bg-muted/10">
                       <h3 className="font-medium mb-3">{model}</h3>

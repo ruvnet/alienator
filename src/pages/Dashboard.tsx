@@ -69,12 +69,12 @@ export default function Dashboard() {
   };
 
   return (
-    <div className="space-y-6 animate-fade-in">
+    <div className="space-y-4 md:space-y-6 animate-fade-in max-w-full overflow-hidden">
       {/* Page Header */}
-      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-        <div>
-          <h1 className="text-2xl md:text-3xl font-bold text-foreground">Real-time Monitor</h1>
-          <p className="text-muted-foreground text-sm md:text-base">AI output anomaly detection dashboard</p>
+      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 md:gap-4">
+        <div className="min-w-0 flex-1">
+          <h1 className="text-xl md:text-2xl lg:text-3xl font-bold text-foreground truncate">Real-time Monitor</h1>
+          <p className="text-muted-foreground text-xs md:text-sm lg:text-base">AI output anomaly detection dashboard</p>
         </div>
         <div className="flex items-center gap-2 self-end sm:self-auto">
           <Activity className="w-4 h-4 text-anomaly-low animate-pulse" />
@@ -85,7 +85,7 @@ export default function Dashboard() {
       </div>
 
       {/* Main Metrics Grid */}
-      <div className="grid grid-cols-1 xl:grid-cols-5 gap-4 md:gap-6">
+      <div className="grid grid-cols-1 xl:grid-cols-5 gap-3 md:gap-4 lg:gap-6 w-full">
         {/* Anomaly Gauge */}
         <Card className="xl:col-span-2 bg-card/50 border-border/50">
           <CardHeader className="pb-4">
@@ -105,7 +105,7 @@ export default function Dashboard() {
         </Card>
 
         {/* Metrics Cards */}
-        <div className="xl:col-span-3 grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <div className="xl:col-span-3 grid grid-cols-1 sm:grid-cols-2 gap-3 md:gap-4 w-full">
           <MetricCard
             title="Shannon Entropy"
             value={metrics.shannonEntropy.toFixed(2)}
@@ -146,7 +146,7 @@ export default function Dashboard() {
       </div>
 
       {/* Live Data Grid */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 md:gap-6">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-3 md:gap-4 lg:gap-6 w-full">
         {/* Live Text Stream */}
         <Card className="bg-card/50 border-border/50">
           <CardHeader className="pb-4">

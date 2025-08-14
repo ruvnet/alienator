@@ -31,12 +31,12 @@ export default function Analytics() {
   ];
 
   return (
-    <div className="space-y-6 animate-fade-in">
+    <div className="space-y-4 md:space-y-6 animate-fade-in max-w-full overflow-hidden">
       {/* Page Header */}
-      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-        <div>
-          <h1 className="text-2xl md:text-3xl font-bold text-foreground">Analytics Dashboard</h1>
-          <p className="text-muted-foreground text-sm md:text-base">Historical analysis and trend visualization</p>
+      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 md:gap-4">
+        <div className="min-w-0 flex-1">
+          <h1 className="text-xl md:text-2xl lg:text-3xl font-bold text-foreground truncate">Analytics Dashboard</h1>
+          <p className="text-muted-foreground text-xs md:text-sm lg:text-base">Historical analysis and trend visualization</p>
         </div>
         <div className="flex items-center gap-2">
           <Select value={timeRange} onValueChange={setTimeRange}>
@@ -59,7 +59,7 @@ export default function Analytics() {
       </div>
 
       {/* Summary Cards */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4 w-full">
         <Card className="bg-card/50 border-border/50">
           <CardHeader className="pb-2">
             <CardTitle className="text-sm font-medium text-muted-foreground">Total Analyses</CardTitle>
@@ -130,7 +130,7 @@ export default function Analytics() {
                   </p>
                 </div>
               </div>
-                <div className="mt-4 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
+                <div className="mt-4 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2 md:gap-4 w-full">
                 {mockTimeSeriesData.map((point, i) => (
                   <div key={i} className="text-xs space-y-1">
                     <div className="font-medium">{point.time}</div>

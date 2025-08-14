@@ -120,12 +120,12 @@ export default function AnomalyLog() {
   };
 
   return (
-    <div className="space-y-6 animate-fade-in">
+    <div className="space-y-4 md:space-y-6 animate-fade-in max-w-full overflow-hidden">
       {/* Page Header */}
-      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-        <div>
-          <h1 className="text-2xl md:text-3xl font-bold text-foreground">Anomaly Log</h1>
-          <p className="text-muted-foreground text-sm md:text-base">Historical anomaly detection records</p>
+      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 md:gap-4">
+        <div className="min-w-0 flex-1">
+          <h1 className="text-xl md:text-2xl lg:text-3xl font-bold text-foreground truncate">Anomaly Log</h1>
+          <p className="text-muted-foreground text-xs md:text-sm lg:text-base">Historical anomaly detection records</p>
         </div>
         <div className="flex items-center gap-2">
           <Badge variant="outline" className="text-anomaly-high border-anomaly-high/30">
@@ -139,7 +139,7 @@ export default function AnomalyLog() {
       </div>
 
       {/* Summary Cards */}
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 w-full">
         <Card className="bg-card/50 border-border/50">
           <CardHeader className="pb-2">
             <CardTitle className="text-sm font-medium text-muted-foreground">Total Anomalies</CardTitle>
@@ -190,7 +190,7 @@ export default function AnomalyLog() {
           </CardTitle>
         </CardHeader>
         <CardContent>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3 md:gap-4 w-full">
             <div className="lg:col-span-2">
               <div className="relative">
                 <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-muted-foreground" />
@@ -363,7 +363,7 @@ export default function AnomalyLog() {
         </TabsContent>
 
         <TabsContent value="details" className="space-y-4">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-3 md:gap-4 lg:gap-6 w-full">
             {filteredLogs.slice(0, 4).map((log) => (
               <Card key={log.id} className={`border ${severityColors[log.severity as keyof typeof severityColors]}`}>
                 <CardHeader>

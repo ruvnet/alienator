@@ -75,12 +75,12 @@ export default function CrossModel() {
   };
 
   return (
-    <div className="space-y-6 animate-fade-in">
+    <div className="space-y-4 md:space-y-6 animate-fade-in max-w-full overflow-hidden">
       {/* Page Header */}
-      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-        <div>
-          <h1 className="text-2xl md:text-3xl font-bold text-foreground">Cross-Model Analysis</h1>
-          <p className="text-muted-foreground text-sm md:text-base">Compare responses across multiple AI models</p>
+      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 md:gap-4">
+        <div className="min-w-0 flex-1">
+          <h1 className="text-xl md:text-2xl lg:text-3xl font-bold text-foreground truncate">Cross-Model Analysis</h1>
+          <p className="text-muted-foreground text-xs md:text-sm lg:text-base">Compare responses across multiple AI models</p>
         </div>
         <div className="flex items-center gap-2">
           <Badge variant="outline" className="text-anomaly-low border-anomaly-low/30">
@@ -94,7 +94,7 @@ export default function CrossModel() {
       </div>
 
       {/* Model Selection & Input */}
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-3 md:gap-4 lg:gap-6 w-full">
         {/* Model Selection */}
         <Card className="bg-card/50 border-border/50">
           <CardHeader>
@@ -191,7 +191,7 @@ export default function CrossModel() {
               <span className="text-sm font-bold">{(consensusScore * 100).toFixed(1)}%</span>
             </div>
             <Progress value={consensusScore * 100} className="h-3" />
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 text-sm">
+            <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-2 md:gap-4 text-xs md:text-sm w-full">
               <div className="text-center">
                 <div className="text-lg font-bold text-anomaly-low">92%</div>
                 <div className="text-muted-foreground">Semantic Similarity</div>
