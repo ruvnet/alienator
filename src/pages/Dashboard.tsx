@@ -19,32 +19,32 @@ const mockAlerts = [
   {
     id: 1,
     type: "critical",
-    message: "High entropy spike detected in GPT-4 responses",
+    message: "Potential non-human pattern detected in GPT-4 output sequence",
     timestamp: new Date(Date.now() - 1000 * 60 * 5),
     severity: "high"
   },
   {
     id: 2,
     type: "warning", 
-    message: "Cross-model deviation above threshold",
+    message: "Anomalous entropy spike suggests external intelligence influence",
     timestamp: new Date(Date.now() - 1000 * 60 * 15),
     severity: "medium"
   },
   {
     id: 3,
     type: "info",
-    message: "Compression ratio normalization complete",
+    message: "Cross-dimensional mathematics detected in embedding space",
     timestamp: new Date(Date.now() - 1000 * 60 * 30),
     severity: "low"
   }
 ];
 
 const mockTextStream = [
-  { id: 1, text: "The quick brown fox jumps over the lazy dog...", anomalyScore: 0.2, timestamp: new Date() },
-  { id: 2, text: "Anomalous pattern detected in linguistic structure...", anomalyScore: 0.8, timestamp: new Date() },
-  { id: 3, text: "Regular text processing with normal entropy levels...", anomalyScore: 0.3, timestamp: new Date() },
-  { id: 4, text: "Cryptographic signature found in output stream...", anomalyScore: 0.9, timestamp: new Date() },
-  { id: 5, text: "Standard response generation within parameters...", anomalyScore: 0.1, timestamp: new Date() }
+  { id: 1, text: "Standard human-like response pattern within normal parameters...", anomalyScore: 0.2, timestamp: new Date() },
+  { id: 2, text: "DETECTED: Non-terrestrial linguistic structure pattern Ж‡∅⟐⊗⫸...", anomalyScore: 0.9, timestamp: new Date() },
+  { id: 3, text: "Regular text processing with expected entropy distribution...", anomalyScore: 0.3, timestamp: new Date() },
+  { id: 4, text: "Hidden frequency modulation suggests quantum consciousness interference...", anomalyScore: 0.8, timestamp: new Date() },
+  { id: 5, text: "Normal AI response generation within baseline thresholds...", anomalyScore: 0.1, timestamp: new Date() }
 ];
 
 export default function Dashboard() {
@@ -73,13 +73,13 @@ export default function Dashboard() {
       {/* Page Header */}
       <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 md:gap-4">
         <div className="min-w-0 flex-1">
-          <h1 className="text-xl md:text-2xl lg:text-3xl font-bold text-foreground truncate">Real-time Monitor</h1>
-          <p className="text-muted-foreground text-xs md:text-sm lg:text-base">AI output anomaly detection dashboard</p>
+          <h1 className="text-xl md:text-2xl lg:text-3xl font-bold text-foreground truncate">👽 Alienator Monitor</h1>
+          <p className="text-muted-foreground text-xs md:text-sm lg:text-base">Detecting non-human intelligence signatures in AI outputs</p>
         </div>
         <div className="flex items-center gap-2 self-end sm:self-auto">
           <Activity className="w-4 h-4 text-anomaly-low animate-pulse" />
           <Badge variant="outline" className="text-anomaly-low border-anomaly-low/30 text-xs">
-            Live Monitoring
+            Scanning for Non-Human Intelligence
           </Badge>
         </div>
       </div>
@@ -91,7 +91,7 @@ export default function Dashboard() {
           <CardHeader className="pb-4">
             <CardTitle className="flex items-center gap-2 text-base md:text-lg">
               <AlertTriangle className="w-4 h-4 md:w-5 md:h-5" />
-              Anomaly Score
+              Non-Human Intelligence Score
             </CardTitle>
           </CardHeader>
           <CardContent className="flex items-center justify-center p-4 md:p-8">
@@ -152,7 +152,7 @@ export default function Dashboard() {
           <CardHeader className="pb-4">
             <CardTitle className="flex items-center gap-2 text-base md:text-lg">
               <Activity className="w-4 h-4 md:w-5 md:h-5 text-anomaly-low animate-pulse" />
-              Live Text Stream
+              Alien Signal Detection Stream
             </CardTitle>
           </CardHeader>
           <CardContent>
@@ -192,7 +192,7 @@ export default function Dashboard() {
           <CardHeader className="pb-4">
             <CardTitle className="flex items-center gap-2 text-base md:text-lg">
               <AlertTriangle className="w-4 h-4 md:w-5 md:h-5 text-anomaly-medium" />
-              Active Alerts
+              Xenological Alerts
               <Badge className="ml-auto bg-anomaly-high/20 text-anomaly-high text-xs">
                 {mockAlerts.filter(a => a.type === "critical").length}
               </Badge>

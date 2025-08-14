@@ -60,8 +60,8 @@ export function AppSidebar() {
             </div>
             {!collapsed && (
               <div>
-                <h2 className="text-sm font-semibold text-foreground">VibeCast</h2>
-                <p className="text-xs text-muted-foreground">Anomaly Detector</p>
+                <h2 className="text-sm font-semibold text-foreground">👽 Alienator</h2>
+                <p className="text-xs text-muted-foreground">Non-Human AI Detection</p>
               </div>
             )}
           </div>
