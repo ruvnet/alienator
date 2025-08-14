@@ -47,7 +47,7 @@ export function AppSidebar() {
 
   return (
     <Sidebar
-      className={`${collapsed ? "w-14" : "w-64"} border-r border-border/50 bg-card/50 backdrop-blur-sm transition-all duration-300`}
+      className={`${collapsed ? "w-14" : "w-64"} border-r border-border/50 bg-card/50 backdrop-blur-sm transition-all duration-300 hidden lg:flex`}
     >
       <SidebarContent className="p-0">
         {/* Logo Section */}
