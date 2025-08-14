@@ -47,7 +47,7 @@ const mockTextStream = [
   { id: 5, text: "Standard response generation within parameters...", anomalyScore: 0.1, timestamp: new Date() }
 ];
 
-export function Dashboard() {
+export default function Dashboard() {
   const [metrics, setMetrics] = useState(generateMockData());
   const [sparklineData, setSparklineData] = useState<number[]>([]);
 
@@ -69,32 +69,32 @@ export function Dashboard() {
   };
 
   return (
-    <div className="space-y-4 sm:space-y-6 animate-fade-in">
+    <div className="space-y-6 animate-fade-in">
       {/* Page Header */}
-      <div className="flex items-center justify-between flex-wrap gap-3">
+      <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-2xl sm:text-3xl font-bold text-foreground">Real-time Monitor</h1>
-          <p className="text-sm sm:text-base text-muted-foreground">AI output anomaly detection dashboard</p>
+          <h1 className="text-3xl font-bold text-foreground">Real-time Monitor</h1>
+          <p className="text-muted-foreground">AI output anomaly detection dashboard</p>
         </div>
         <div className="flex items-center gap-2">
           <Activity className="w-4 h-4 text-anomaly-low animate-pulse" />
-          <Badge variant="outline" className="text-anomaly-low border-anomaly-low/30 text-xs sm:text-sm">
+          <Badge variant="outline" className="text-anomaly-low border-anomaly-low/30">
             Live Monitoring
           </Badge>
         </div>
       </div>
 
       {/* Main Metrics Grid */}
-      <div className="grid grid-cols-1 lg:grid-cols-5 gap-4 sm:gap-6">
+      <div className="grid grid-cols-1 lg:grid-cols-5 gap-6">
         {/* Anomaly Gauge */}
         <Card className="lg:col-span-2 bg-card/50 border-border/50">
-          <CardHeader className="pb-3 sm:pb-6">
-            <CardTitle className="flex items-center gap-2 text-base sm:text-lg">
-              <AlertTriangle className="w-4 h-4 sm:w-5 sm:h-5" />
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+              <AlertTriangle className="w-5 h-5" />
               Anomaly Score
             </CardTitle>
           </CardHeader>
-          <CardContent className="flex items-center justify-center p-4 sm:p-8">
+          <CardContent className="flex items-center justify-center p-8">
             <AnomalyGauge 
               value={metrics.anomalyScore} 
               size="xl" 
@@ -105,7 +105,7 @@ export function Dashboard() {
         </Card>
 
         {/* Metrics Cards */}
-        <div className="lg:col-span-3 grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
+        <div className="lg:col-span-3 grid grid-cols-1 md:grid-cols-2 gap-4">
           <MetricCard
             title="Shannon Entropy"
             value={metrics.shannonEntropy.toFixed(2)}
@@ -146,17 +146,17 @@ export function Dashboard() {
       </div>
 
       {/* Live Data Grid */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         {/* Live Text Stream */}
         <Card className="bg-card/50 border-border/50">
-          <CardHeader className="pb-3 sm:pb-6">
-            <CardTitle className="flex items-center gap-2 text-base sm:text-lg">
-              <Activity className="w-4 h-4 sm:w-5 sm:h-5 text-anomaly-low animate-pulse" />
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+              <Activity className="w-5 h-5 text-anomaly-low animate-pulse" />
               Live Text Stream
             </CardTitle>
           </CardHeader>
-          <CardContent className="p-3 sm:p-6">
-            <div className="space-y-3 max-h-64 sm:max-h-80 overflow-y-auto">
+          <CardContent>
+            <div className="space-y-3 max-h-80 overflow-y-auto">
               {mockTextStream.map((item, index) => (
                 <div 
                   key={item.id}
@@ -180,7 +180,7 @@ export function Dashboard() {
                       {item.timestamp.toLocaleTimeString()}
                     </span>
                   </div>
-                  <p className="text-xs sm:text-sm text-foreground/80">{item.text}</p>
+                  <p className="text-sm text-foreground/80">{item.text}</p>
                 </div>
               ))}
             </div>
@@ -189,16 +189,16 @@ export function Dashboard() {
 
         {/* Alerts Feed */}
         <Card className="bg-card/50 border-border/50">
-          <CardHeader className="pb-3 sm:pb-6">
-            <CardTitle className="flex items-center gap-2 text-base sm:text-lg">
-              <AlertTriangle className="w-4 h-4 sm:w-5 sm:h-5 text-anomaly-medium" />
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+              <AlertTriangle className="w-5 h-5 text-anomaly-medium" />
               Active Alerts
-              <Badge className="ml-auto bg-anomaly-high/20 text-anomaly-high text-xs">
+              <Badge className="ml-auto bg-anomaly-high/20 text-anomaly-high">
                 {mockAlerts.filter(a => a.type === "critical").length}
               </Badge>
             </CardTitle>
           </CardHeader>
-          <CardContent className="p-3 sm:p-6">
+          <CardContent>
             <div className="space-y-3">
               {mockAlerts.map((alert) => (
                 <div 
@@ -212,14 +212,14 @@ export function Dashboard() {
                   }`}
                 >
                   <div className="flex items-start justify-between">
-                     <div className="flex-1 min-w-0">
-                       <p className="text-xs sm:text-sm font-medium text-foreground">
-                         {alert.message}
-                       </p>
-                       <p className="text-xs text-muted-foreground mt-1">
-                         {alert.timestamp.toLocaleString()}
-                       </p>
-                     </div>
+                    <div className="flex-1">
+                      <p className="text-sm font-medium text-foreground">
+                        {alert.message}
+                      </p>
+                      <p className="text-xs text-muted-foreground mt-1">
+                        {alert.timestamp.toLocaleString()}
+                      </p>
+                    </div>
                     <Button 
                       variant="ghost" 
                       size="sm" 
