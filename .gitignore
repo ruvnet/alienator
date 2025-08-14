@@ -7,10 +7,46 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
+# Node.js dependencies
 node_modules
 dist
 dist-ssr
 *.local
+npm-debug.log
+yarn-error.log
+package-lock.json
+yarn.lock
+.npm
+.yarn-integrity
+coverage/
+.nyc_output
+.cache
+
+# Go build artifacts
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+*.test
+*.out
+go.work
+go.work.sum
+
+# Go vendor directory
+vendor/
+
+# Go coverage files
+*.cover
+*.coverprofile
+
+# Go binary output
+bin/
+build/
+
+# Go module download cache
+go.mod.bak
+go.sum.bak
 
 # Editor directories and files
 .vscode/*
@@ -22,3 +58,28 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Claude Flow generated files
+.claude/settings.local.json
+.mcp.json
+claude-flow.config.json
+.swarm/
+.hive-mind/
+memory/claude-flow-data.json
+memory/sessions/*
+!memory/sessions/README.md
+memory/agents/*
+!memory/agents/README.md
+coordination/memory_bank/*
+coordination/subtasks/*
+coordination/orchestration/*
+*.db
+*.db-journal
+*.db-wal
+*.sqlite
+*.sqlite-journal
+*.sqlite-wal
+claude-flow
+claude-flow.bat
+claude-flow.ps1
+hive-mind-prompt-*.txt
