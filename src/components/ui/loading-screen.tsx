@@ -6,17 +6,27 @@ interface LoadingScreenProps {
   duration?: number;
 }
 
-export function LoadingScreen({ onComplete, duration = 3000 }: LoadingScreenProps) {
+export function LoadingScreen({ onComplete, duration = 5000 }: LoadingScreenProps) {
   const [progress, setProgress] = useState(0);
   const [currentPhase, setCurrentPhase] = useState(0);
   const [currentDiagnostic, setCurrentDiagnostic] = useState(0);
   const [isComplete, setIsComplete] = useState(false);
+  const [isGlitching, setIsGlitching] = useState(false);
+  const [glitchText, setGlitchText] = useState("");
 
   const phases = [
     "SYSTEM INITIALIZATION",
     "QUANTUM SENSORS ONLINE",
     "PATTERN RECOGNITION ACTIVE", 
     "XENOLOGICAL PROTOCOLS READY"
+  ];
+
+  const glitchPhrases = [
+    "SIGNAL INTERFERENCE DETECTED",
+    "UNKNOWN TRANSMISSION INTERCEPTED", 
+    "DIMENSIONAL BREACH ANOMALY",
+    "ALIEN PROTOCOL ANALYSIS...",
+    "◊∆◊∆ NON-HUMAN SIGNATURE ∆◊∆◊"
   ];
 
   const diagnostics = [
@@ -51,6 +61,7 @@ export function LoadingScreen({ onComplete, duration = 3000 }: LoadingScreenProp
           }, 300);
           clearInterval(progressInterval);
           clearInterval(diagnosticInterval);
+          clearInterval(glitchInterval);
         }
         
         return newProgress;
@@ -67,20 +78,61 @@ export function LoadingScreen({ onComplete, duration = 3000 }: LoadingScreenProp
       });
     }, duration / 12); // Show diagnostics faster than progress
 
+    // Random glitch effects
+    const glitchInterval = setInterval(() => {
+      if (Math.random() < 0.15) { // 15% chance every interval
+        setIsGlitching(true);
+        setGlitchText(glitchPhrases[Math.floor(Math.random() * glitchPhrases.length)]);
+        setTimeout(() => {
+          setIsGlitching(false);
+          setGlitchText("");
+        }, 200 + Math.random() * 300); // Glitch for 200-500ms
+      }
+    }, 1000); // Check for glitch every second
+
     return () => {
       clearInterval(progressInterval);
       clearInterval(diagnosticInterval);
+      clearInterval(glitchInterval);
     };
-  }, [duration, onComplete, phases.length, diagnostics.length]);
+  }, [duration, onComplete, phases.length, diagnostics.length, glitchPhrases.length]);
 
   return (
     <div className={`fixed inset-0 z-50 flex flex-col justify-center bg-background transition-opacity duration-300 ${
       isComplete ? 'opacity-0 pointer-events-none' : 'opacity-100'
-    }`}>
+    } ${isGlitching ? 'animate-pulse' : ''}`}>
+      
+      {/* Glitch overlay */}
+      {isGlitching && (
+        <div className="absolute inset-0 z-10">
+          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-foreground/5 to-transparent animate-pulse" />
+          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+            <div className="font-mono text-lg text-foreground/80 tracking-wider animate-pulse bg-background/90 px-4 py-2 border border-foreground/20">
+              {glitchText}
+            </div>
+          </div>
+          {/* Static lines */}
+          <div className="absolute inset-0">
+            {Array.from({ length: 3 }).map((_, i) => (
+              <div
+                key={i}
+                className="h-px bg-foreground/30 absolute w-full animate-pulse"
+                style={{ 
+                  top: `${30 + i * 20}%`,
+                  animationDuration: '0.1s'
+                }}
+              />
+            ))}
+          </div>
+        </div>
+      )}
+
       {/* Single scanning line */}
       <div className="absolute inset-0">
         <div 
-          className="h-px bg-gradient-to-r from-transparent via-foreground/20 to-transparent absolute w-full transition-all duration-1000"
+          className={`h-px bg-gradient-to-r from-transparent via-foreground/20 to-transparent absolute w-full transition-all duration-1000 ${
+            isGlitching ? 'animate-pulse' : ''
+          }`}
           style={{ 
             top: `${20 + (progress * 0.6)}%`,
             opacity: isComplete ? 0 : 0.6
@@ -139,21 +191,28 @@ export function LoadingScreen({ onComplete, duration = 3000 }: LoadingScreenProp
             </div>
             
             <div className="font-mono text-xs text-foreground/50 tracking-widest">
-              [{progress.toString().padStart(3, '0')}%] {phases[currentPhase]}
+              [{progress.toString().padStart(3, '0')}%] {isGlitching ? glitchText : phases[currentPhase]}
             </div>
           </div>
 
           {/* Diagnostic Output */}
-          <div className="bg-foreground/5 border border-foreground/10 rounded-sm p-4 text-left font-mono text-xs">
+          <div className={`bg-foreground/5 border border-foreground/10 rounded-sm p-4 text-left font-mono text-xs ${
+            isGlitching ? 'animate-pulse border-foreground/30' : ''
+          }`}>
             <div className="text-foreground/40 mb-2">SYSTEM_LOG:</div>
             <div className="space-y-1 max-h-24 overflow-hidden">
               {diagnostics.slice(Math.max(0, currentDiagnostic - 3), currentDiagnostic + 1).map((diagnostic, index, array) => (
                 <div 
                   key={currentDiagnostic - array.length + 1 + index}
-                  className={`text-foreground/${index === array.length - 1 ? '70' : '40'} transition-opacity duration-300`}
+                  className={`text-foreground/${index === array.length - 1 ? '70' : '40'} transition-opacity duration-300 ${
+                    isGlitching && index === array.length - 1 ? 'animate-pulse' : ''
+                  }`}
                 >
                   <span className="text-foreground/30">&gt; </span>
-                  {diagnostic}
+                  {isGlitching && index === array.length - 1 ? 
+                    "ERROR: █▓▒░ UNKNOWN SIGNAL DETECTED ░▒▓█" : 
+                    diagnostic
+                  }
                 </div>
               ))}
             </div>
