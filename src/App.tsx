@@ -14,6 +14,7 @@ import Embeddings from "./pages/Embeddings";
 import Cryptographic from "./pages/Cryptographic";
 import Linguistic from "./pages/Linguistic";
 import AnomalyLog from "./pages/AnomalyLog";
+import EnhancedAnomalyLog from "./pages/EnhancedAnomalyLog";
 import Configuration from "./pages/Configuration";
 import Documentation from "./pages/Documentation";
 import Index from "./pages/Index";
@@ -48,6 +49,7 @@ const App = () => {
                   <Route path="crypto" element={<Cryptographic />} />
                   <Route path="linguistic" element={<Linguistic />} />
                   <Route path="logs" element={<AnomalyLog />} />
+                  <Route path="enhanced-logs" element={<EnhancedAnomalyLog />} />
                   <Route path="settings" element={<Configuration />} />
                   <Route path="docs" element={<Documentation />} />
                   <Route path="*" element={<NotFound />} />

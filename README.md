@@ -391,6 +391,13 @@ Alienator is an experimental platform designed for research and exploration. Whi
 
 MIT License - See [LICENSE](https://github.com/ruvnet/alienator/blob/main/LICENSE) file for details.
 
+## 🛠️ Support
+
+- **Claude Flow Documentation**: https://github.com/ruvnet/claude-flow
+- **Claude Flow Issues**: https://github.com/ruvnet/claude-flow/issues
+- **Claude Code Documentation**: https://github.com/anthropics/claude-code
+- **Claude Code Issues**: https://github.com/anthropics/claude-code/issues
+
 ## 🌟 Acknowledgments
 
 - The SETI Institute for inspiration in the search for intelligence

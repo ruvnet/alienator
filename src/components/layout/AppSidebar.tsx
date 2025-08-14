@@ -8,7 +8,9 @@ import {
   History, 
   Settings,
   Binary,
-  BookOpen
+  BookOpen,
+  Database,
+  Zap
 } from "lucide-react";
 import { NavLink, useLocation } from "react-router-dom";
 import {
@@ -31,12 +33,13 @@ const navigationItems = [
   { icon: Shield, label: "Cryptographic", path: "/crypto" },
   { icon: Languages, label: "Linguistic", path: "/linguistic" },
   { icon: History, label: "Anomaly Log", path: "/logs" },
+  { icon: Database, label: "Enhanced Logs", path: "/enhanced-logs" },
   { icon: BookOpen, label: "Documentation", path: "/docs" },
   { icon: Settings, label: "Configuration", path: "/settings" }
 ];
 
 export function AppSidebar() {
-  const { state } = useSidebar();
+  const { state, isMobile, setOpenMobile } = useSidebar();
   const location = useLocation();
   const currentPath = location.pathname;
   const collapsed = state === "collapsed";
@@ -46,6 +49,13 @@ export function AppSidebar() {
     active 
       ? "bg-primary/10 text-primary border-r-2 border-primary" 
       : "hover:bg-muted/50 text-muted-foreground hover:text-foreground";
+
+  const handleNavClick = () => {
+    // Close mobile sidebar when navigation item is clicked
+    if (isMobile) {
+      setOpenMobile(false);
+    }
+  };
 
   return (
     <Sidebar
@@ -82,6 +92,7 @@ export function AppSidebar() {
                     <NavLink 
                       to={item.path} 
                       end 
+                      onClick={handleNavClick}
                       className={`flex items-center gap-3 px-3 py-2 rounded-md transition-all duration-200 ${getNavClasses(isActive(item.path))}`}
                     >
                       <item.icon className="w-4 h-4 flex-shrink-0" />
