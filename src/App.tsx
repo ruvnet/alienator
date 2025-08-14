@@ -23,9 +23,14 @@ const queryClient = new QueryClient();
 
 const App = () => {
   const [showLoading, setShowLoading] = useState(true);
+  const [isTransitioning, setIsTransitioning] = useState(false);
 
   const handleLoadingComplete = () => {
-    setShowLoading(false);
+    setIsTransitioning(true);
+    setTimeout(() => {
+      setShowLoading(false);
+      setIsTransitioning(false);
+    }, 500); // Brief transition delay
   };
 
   if (showLoading) {
@@ -33,28 +38,32 @@ const App = () => {
   }
 
   return (
-    <QueryClientProvider client={queryClient}>
-      <TooltipProvider>
-        <Toaster />
-        <Sonner />
-        <BrowserRouter>
-          <Routes>
-            <Route path="/" element={<DashboardLayout />}>
-              <Route index element={<Dashboard />} />
-              <Route path="analytics" element={<Analytics />} />
-              <Route path="cross-model" element={<CrossModel />} />
-              <Route path="embeddings" element={<Embeddings />} />
-              <Route path="crypto" element={<Cryptographic />} />
-              <Route path="linguistic" element={<Linguistic />} />
-              <Route path="logs" element={<AnomalyLog />} />
-              <Route path="settings" element={<Configuration />} />
-              <Route path="docs" element={<Documentation />} />
-              <Route path="*" element={<NotFound />} />
-            </Route>
-          </Routes>
-        </BrowserRouter>
-      </TooltipProvider>
-    </QueryClientProvider>
+    <div className={`min-h-screen bg-background transition-opacity duration-500 ${
+      isTransitioning ? 'opacity-0' : 'opacity-100'
+    }`}>
+      <QueryClientProvider client={queryClient}>
+        <TooltipProvider>
+          <Toaster />
+          <Sonner />
+          <BrowserRouter>
+            <Routes>
+              <Route path="/" element={<DashboardLayout />}>
+                <Route index element={<Dashboard />} />
+                <Route path="analytics" element={<Analytics />} />
+                <Route path="cross-model" element={<CrossModel />} />
+                <Route path="embeddings" element={<Embeddings />} />
+                <Route path="crypto" element={<Cryptographic />} />
+                <Route path="linguistic" element={<Linguistic />} />
+                <Route path="logs" element={<AnomalyLog />} />
+                <Route path="settings" element={<Configuration />} />
+                <Route path="docs" element={<Documentation />} />
+                <Route path="*" element={<NotFound />} />
+              </Route>
+            </Routes>
+          </BrowserRouter>
+        </TooltipProvider>
+      </QueryClientProvider>
+    </div>
   );
 };
 
