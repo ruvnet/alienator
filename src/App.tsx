@@ -1,9 +1,11 @@
 
+import { useState, useEffect } from "react";
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { LoadingScreen } from "@/components/ui/loading-screen";
 import { DashboardLayout } from "./components/layout/DashboardLayout";
 import Dashboard from "./pages/Dashboard";
 import Analytics from "./pages/Analytics";
@@ -19,29 +21,50 @@ import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
 
-const App = () => (
-  <QueryClientProvider client={queryClient}>
-    <TooltipProvider>
-      <Toaster />
-      <Sonner />
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<DashboardLayout />}>
-            <Route index element={<Dashboard />} />
-            <Route path="analytics" element={<Analytics />} />
-            <Route path="cross-model" element={<CrossModel />} />
-            <Route path="embeddings" element={<Embeddings />} />
-            <Route path="crypto" element={<Cryptographic />} />
-            <Route path="linguistic" element={<Linguistic />} />
-            <Route path="logs" element={<AnomalyLog />} />
-            <Route path="settings" element={<Configuration />} />
-            <Route path="docs" element={<Documentation />} />
-            <Route path="*" element={<NotFound />} />
-          </Route>
-        </Routes>
-      </BrowserRouter>
-    </TooltipProvider>
-  </QueryClientProvider>
-);
+const App = () => {
+  const [showLoading, setShowLoading] = useState(true);
+
+  useEffect(() => {
+    // Check if user has seen loading screen in this session
+    const hasSeenLoading = sessionStorage.getItem('alienator-loading-seen');
+    if (hasSeenLoading) {
+      setShowLoading(false);
+    }
+  }, []);
+
+  const handleLoadingComplete = () => {
+    sessionStorage.setItem('alienator-loading-seen', 'true');
+    setShowLoading(false);
+  };
+
+  if (showLoading) {
+    return <LoadingScreen onComplete={handleLoadingComplete} />;
+  }
+
+  return (
+    <QueryClientProvider client={queryClient}>
+      <TooltipProvider>
+        <Toaster />
+        <Sonner />
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<DashboardLayout />}>
+              <Route index element={<Dashboard />} />
+              <Route path="analytics" element={<Analytics />} />
+              <Route path="cross-model" element={<CrossModel />} />
+              <Route path="embeddings" element={<Embeddings />} />
+              <Route path="crypto" element={<Cryptographic />} />
+              <Route path="linguistic" element={<Linguistic />} />
+              <Route path="logs" element={<AnomalyLog />} />
+              <Route path="settings" element={<Configuration />} />
+              <Route path="docs" element={<Documentation />} />
+              <Route path="*" element={<NotFound />} />
+            </Route>
+          </Routes>
+        </BrowserRouter>
+      </TooltipProvider>
+    </QueryClientProvider>
+  );
+};
 
 export default App;
