@@ -116,7 +116,7 @@ export default function Configuration() {
               </CardTitle>
             </CardHeader>
             <CardContent className="space-y-6">
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
                 <div className="space-y-4">
                   <div>
                     <Label className="text-sm font-medium">
@@ -189,7 +189,7 @@ export default function Configuration() {
 
               <div className="p-4 bg-muted/10 rounded-lg border border-border/30">
                 <h3 className="font-medium mb-2">Threshold Guidelines</h3>
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 text-sm">
                   <div>
                     <strong>Conservative (High Sensitivity):</strong>
                     <div className="text-muted-foreground">
@@ -225,7 +225,7 @@ export default function Configuration() {
             <CardContent className="space-y-4">
               <div className="space-y-4">
                 <Label className="text-sm font-medium">Enabled Models for Analysis</Label>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   {availableModels.map((model) => (
                     <div key={model.id} className="flex items-center justify-between p-3 border border-border/30 rounded-lg bg-muted/10">
                       <div>

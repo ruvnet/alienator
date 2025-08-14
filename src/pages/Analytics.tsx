@@ -59,7 +59,7 @@ export default function Analytics() {
       </div>
 
       {/* Summary Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
         <Card className="bg-card/50 border-border/50">
           <CardHeader className="pb-2">
             <CardTitle className="text-sm font-medium text-muted-foreground">Total Analyses</CardTitle>
@@ -130,7 +130,7 @@ export default function Analytics() {
                   </p>
                 </div>
               </div>
-              <div className="mt-4 flex flex-wrap gap-4">
+                <div className="mt-4 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
                 {mockTimeSeriesData.map((point, i) => (
                   <div key={i} className="text-xs space-y-1">
                     <div className="font-medium">{point.time}</div>

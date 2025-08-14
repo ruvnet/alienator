@@ -154,7 +154,7 @@ export default function Linguistic() {
           </CardTitle>
         </CardHeader>
         <CardContent>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {filteredMetrics.map((metric, index) => (
               <div
                 key={index}
@@ -254,7 +254,7 @@ export default function Linguistic() {
               </CardTitle>
             </CardHeader>
             <CardContent>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
                 {mockStyleAnalysis.map((feature, index) => (
                   <div
                     key={index}
@@ -330,7 +330,7 @@ export default function Linguistic() {
             </CardHeader>
             <CardContent>
               <div className="space-y-4">
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                   {["GPT-4", "Claude-3", "Cohere"].map((model) => (
                     <div key={model} className="p-4 border border-border/30 rounded-lg bg-muted/10">
                       <h3 className="font-medium mb-3">{model}</h3>

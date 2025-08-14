@@ -191,7 +191,7 @@ export default function CrossModel() {
               <span className="text-sm font-bold">{(consensusScore * 100).toFixed(1)}%</span>
             </div>
             <Progress value={consensusScore * 100} className="h-3" />
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 text-sm">
               <div className="text-center">
                 <div className="text-lg font-bold text-anomaly-low">92%</div>
                 <div className="text-muted-foreground">Semantic Similarity</div>
