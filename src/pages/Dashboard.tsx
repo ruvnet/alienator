@@ -71,30 +71,30 @@ export default function Dashboard() {
   return (
     <div className="space-y-6 animate-fade-in">
       {/* Page Header */}
-      <div className="flex items-center justify-between">
+      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
         <div>
-          <h1 className="text-3xl font-bold text-foreground">Real-time Monitor</h1>
-          <p className="text-muted-foreground">AI output anomaly detection dashboard</p>
+          <h1 className="text-2xl md:text-3xl font-bold text-foreground">Real-time Monitor</h1>
+          <p className="text-muted-foreground text-sm md:text-base">AI output anomaly detection dashboard</p>
         </div>
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-2 self-end sm:self-auto">
           <Activity className="w-4 h-4 text-anomaly-low animate-pulse" />
-          <Badge variant="outline" className="text-anomaly-low border-anomaly-low/30">
+          <Badge variant="outline" className="text-anomaly-low border-anomaly-low/30 text-xs">
             Live Monitoring
           </Badge>
         </div>
       </div>
 
       {/* Main Metrics Grid */}
-      <div className="grid grid-cols-1 lg:grid-cols-5 gap-6">
+      <div className="grid grid-cols-1 xl:grid-cols-5 gap-4 md:gap-6">
         {/* Anomaly Gauge */}
-        <Card className="lg:col-span-2 bg-card/50 border-border/50">
-          <CardHeader>
-            <CardTitle className="flex items-center gap-2">
-              <AlertTriangle className="w-5 h-5" />
+        <Card className="xl:col-span-2 bg-card/50 border-border/50">
+          <CardHeader className="pb-4">
+            <CardTitle className="flex items-center gap-2 text-base md:text-lg">
+              <AlertTriangle className="w-4 h-4 md:w-5 md:h-5" />
               Anomaly Score
             </CardTitle>
           </CardHeader>
-          <CardContent className="flex items-center justify-center p-8">
+          <CardContent className="flex items-center justify-center p-4 md:p-8">
             <AnomalyGauge 
               value={metrics.anomalyScore} 
               size="xl" 
@@ -105,7 +105,7 @@ export default function Dashboard() {
         </Card>
 
         {/* Metrics Cards */}
-        <div className="lg:col-span-3 grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div className="xl:col-span-3 grid grid-cols-1 sm:grid-cols-2 gap-4">
           <MetricCard
             title="Shannon Entropy"
             value={metrics.shannonEntropy.toFixed(2)}
@@ -146,42 +146,42 @@ export default function Dashboard() {
       </div>
 
       {/* Live Data Grid */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 md:gap-6">
         {/* Live Text Stream */}
         <Card className="bg-card/50 border-border/50">
-          <CardHeader>
-            <CardTitle className="flex items-center gap-2">
-              <Activity className="w-5 h-5 text-anomaly-low animate-pulse" />
+          <CardHeader className="pb-4">
+            <CardTitle className="flex items-center gap-2 text-base md:text-lg">
+              <Activity className="w-4 h-4 md:w-5 md:h-5 text-anomaly-low animate-pulse" />
               Live Text Stream
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="space-y-3 max-h-80 overflow-y-auto">
+            <div className="space-y-3 max-h-60 md:max-h-80 overflow-y-auto">
               {mockTextStream.map((item, index) => (
-                <div 
-                  key={item.id}
-                  className="p-3 rounded-lg border border-border/30 bg-muted/20 hover:bg-muted/30 transition-colors"
-                  style={{ animationDelay: `${index * 100}ms` }}
-                >
-                  <div className="flex items-start justify-between mb-2">
-                    <Badge 
-                      variant="outline" 
-                      className={`text-xs ${
-                        item.anomalyScore >= 0.7 
-                          ? "border-anomaly-high/30 text-anomaly-high" 
-                          : item.anomalyScore >= 0.3 
-                          ? "border-anomaly-medium/30 text-anomaly-medium"
-                          : "border-anomaly-low/30 text-anomaly-low"
-                      }`}
-                    >
-                      {(item.anomalyScore * 100).toFixed(1)}% anomaly
-                    </Badge>
-                    <span className="text-xs text-muted-foreground">
-                      {item.timestamp.toLocaleTimeString()}
-                    </span>
-                  </div>
-                  <p className="text-sm text-foreground/80">{item.text}</p>
-                </div>
+                  <div 
+                   key={item.id}
+                   className="p-2 md:p-3 rounded-lg border border-border/30 bg-muted/20 hover:bg-muted/30 transition-colors"
+                   style={{ animationDelay: `${index * 100}ms` }}
+                 >
+                   <div className="flex items-start justify-between mb-2 gap-2">
+                     <Badge 
+                       variant="outline" 
+                       className={`text-xs flex-shrink-0 ${
+                         item.anomalyScore >= 0.7 
+                           ? "border-anomaly-high/30 text-anomaly-high" 
+                           : item.anomalyScore >= 0.3 
+                           ? "border-anomaly-medium/30 text-anomaly-medium"
+                           : "border-anomaly-low/30 text-anomaly-low"
+                       }`}
+                     >
+                       {(item.anomalyScore * 100).toFixed(1)}%
+                     </Badge>
+                     <span className="text-xs text-muted-foreground flex-shrink-0">
+                       {item.timestamp.toLocaleTimeString()}
+                     </span>
+                   </div>
+                   <p className="text-sm text-foreground/80 break-words">{item.text}</p>
+                 </div>
               ))}
             </div>
           </CardContent>
@@ -189,11 +189,11 @@ export default function Dashboard() {
 
         {/* Alerts Feed */}
         <Card className="bg-card/50 border-border/50">
-          <CardHeader>
-            <CardTitle className="flex items-center gap-2">
-              <AlertTriangle className="w-5 h-5 text-anomaly-medium" />
+          <CardHeader className="pb-4">
+            <CardTitle className="flex items-center gap-2 text-base md:text-lg">
+              <AlertTriangle className="w-4 h-4 md:w-5 md:h-5 text-anomaly-medium" />
               Active Alerts
-              <Badge className="ml-auto bg-anomaly-high/20 text-anomaly-high">
+              <Badge className="ml-auto bg-anomaly-high/20 text-anomaly-high text-xs">
                 {mockAlerts.filter(a => a.type === "critical").length}
               </Badge>
             </CardTitle>
@@ -201,34 +201,34 @@ export default function Dashboard() {
           <CardContent>
             <div className="space-y-3">
               {mockAlerts.map((alert) => (
-                <div 
-                  key={alert.id}
-                  className={`p-3 rounded-lg border transition-all hover:shadow-md ${
-                    alert.severity === "high" 
-                      ? "border-anomaly-high/30 bg-anomaly-high/5" 
-                      : alert.severity === "medium"
-                      ? "border-anomaly-medium/30 bg-anomaly-medium/5"
-                      : "border-border/30 bg-muted/20"
-                  }`}
-                >
-                  <div className="flex items-start justify-between">
-                    <div className="flex-1">
-                      <p className="text-sm font-medium text-foreground">
-                        {alert.message}
-                      </p>
-                      <p className="text-xs text-muted-foreground mt-1">
-                        {alert.timestamp.toLocaleString()}
-                      </p>
-                    </div>
-                    <Button 
-                      variant="ghost" 
-                      size="sm" 
-                      className="ml-2 text-xs"
-                    >
-                      Dismiss
-                    </Button>
-                  </div>
-                </div>
+                 <div 
+                   key={alert.id}
+                   className={`p-2 md:p-3 rounded-lg border transition-all hover:shadow-md ${
+                     alert.severity === "high" 
+                       ? "border-anomaly-high/30 bg-anomaly-high/5" 
+                       : alert.severity === "medium"
+                       ? "border-anomaly-medium/30 bg-anomaly-medium/5"
+                       : "border-border/30 bg-muted/20"
+                   }`}
+                 >
+                   <div className="flex items-start justify-between gap-2">
+                     <div className="flex-1 min-w-0">
+                       <p className="text-sm font-medium text-foreground break-words">
+                         {alert.message}
+                       </p>
+                       <p className="text-xs text-muted-foreground mt-1">
+                         {alert.timestamp.toLocaleString()}
+                       </p>
+                     </div>
+                     <Button 
+                       variant="ghost" 
+                       size="sm" 
+                       className="ml-2 text-xs flex-shrink-0"
+                     >
+                       Dismiss
+                     </Button>
+                   </div>
+                 </div>
               ))}
             </div>
           </CardContent>
