@@ -21,7 +21,9 @@ import {
   Code,
   BookOpen,
   Cpu,
-  Database
+  Database,
+  Github,
+  ExternalLink
 } from "lucide-react";
 
 const Documentation = () => {
@@ -33,9 +35,19 @@ const Documentation = () => {
           <div className="p-3 bg-primary/10 rounded-lg">
             <Binary className="w-8 h-8 text-primary" />
           </div>
+        <div className="flex items-center gap-4">
           <h1 className="text-4xl font-bold bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent">
             👽 Alienator
           </h1>
+          <a 
+            href="https://github.com/ruvnet/alienator" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="p-2 bg-primary/10 rounded-lg hover:bg-primary/20 transition-colors"
+          >
+            <Github className="w-6 h-6 text-primary" />
+          </a>
+        </div>
         </div>
         <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
           Advanced Detection System for Non-Human Intelligence in AI Outputs

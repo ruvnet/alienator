@@ -1,4 +1,4 @@
-import { Search, Bell, User, Wifi } from "lucide-react";
+import { Search, Bell, User, Wifi, Github } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { SidebarTrigger } from "@/components/ui/sidebar";
@@ -27,6 +27,23 @@ export function DashboardHeader() {
             Connected
           </Badge>
         </div>
+
+        {/* GitHub Link */}
+        <Button 
+          variant="ghost" 
+          size="icon" 
+          className="w-8 h-8 md:w-10 md:h-10" 
+          asChild
+        >
+          <a 
+            href="https://github.com/ruvnet/alienator" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            aria-label="GitHub Repository"
+          >
+            <Github className="w-4 h-4" />
+          </a>
+        </Button>
 
         {/* Notifications */}
         <Button variant="ghost" size="icon" className="relative w-8 h-8 md:w-10 md:h-10">
